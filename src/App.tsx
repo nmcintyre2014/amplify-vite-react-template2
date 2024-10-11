@@ -9,6 +9,12 @@ function App() {
   const { signOut } = useAuthenticator();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
+  const [file, setFile] = React.useState();
+
+  const handleChange = (event: any) => {
+    setFile(event.target.files[0]);
+  };
+
   useEffect(() => {
     client.models.Todo.observeQuery().subscribe({
       next: (data) => setTodos([...data.items]),
@@ -43,6 +49,20 @@ function App() {
         </a>
       </div>
       <button onClick={signOut}>Sign out</button>
+
+      <div>
+      <input type="file" onChange={handleChange} />
+        <button
+          onClick={() =>
+            uploadData({
+              path: `picture-submissions/${file.name}`,
+              data: file,
+          })
+        }
+      >
+        Upload
+      </button>
+    </div>
     </main>
   );
 }
