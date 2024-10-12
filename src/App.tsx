@@ -1,11 +1,10 @@
-import React from 'react';
-import { uploadData } from 'aws-amplify/storage';
-
 function App() {
 
   return (
+    <main>
     <div>
       Test
     </div>
+    </main>
   );
 }
