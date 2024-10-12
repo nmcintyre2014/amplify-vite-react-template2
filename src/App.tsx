@@ -1,22 +1,28 @@
 import React from 'react';
-import { Storage } from 'aws-amplify' 
+import { uploadData } from 'aws-amplify/storage';
 
-class App extends React.Component {
-  onChange(e) {
-    const file = e.target.files[0];
-    Storage.put(file.name, file)
-    .then (result => console.log(result))
-    .catch(err => console.log(err));
-  }
+function App() {
+  const [file, setFile] = React.useState();
 
-  render() {
-    return (
-      <input
-        type="file" accept='image/png'
-        onChange={(e) => this.onChange(e)}
-      />
-    )
-  }
+  const handleChange = (event: any) => {
+    setFile(event.target.files[0]);
+  };
+
+  return (
+    <div>
+      <input type="file" onChange={handleChange} />
+        <button
+          onClick={() =>
+            uploadData({
+              path: `${file.name}`,
+              data: file,
+          })
+        }
+      >
+        Upload
+      </button>
+    </div>
+  );
 }
 
 export default App;
