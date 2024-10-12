@@ -1,14 +1,7 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { useAuthenticator } from '@aws-amplify/ui-react';
-import { generateClient } from "aws-amplify/data";
-
-
-const client = generateClient<Schema>();
+import React from 'react';
+import { uploadData } from 'aws-amplify/storage';
 
 function App() {
-  const { signOut } = useAuthenticator();
-
   const [file, setFile] = React.useState();
 
   const handleChange = (event: any) => {
@@ -16,9 +9,7 @@ function App() {
   };
 
   return (
-    <main>
-
-      <div>
+    <div>
       <input type="file" onChange={handleChange} />
         <button
           onClick={() =>
@@ -30,10 +21,6 @@ function App() {
       >
         Upload
       </button>
-      <button onClick={signOut}>Sign out</button>
     </div>
-    </main>
   );
 }
-
-export default App;
