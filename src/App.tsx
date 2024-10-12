@@ -14,7 +14,7 @@ function App() {
         <button
           onClick={() =>
             uploadData({
-              path: `${file.name}`,
+              path: `data/${file.name}`,
               data: file,
           })
         }
