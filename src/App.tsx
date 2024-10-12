@@ -2,14 +2,11 @@ import React from 'react';
 import { uploadData } from 'aws-amplify/storage';
 
 function App() {
-  const [file, setFile] = React.useState();
-
-  const handleChange = (event: any) => {
-    setFile(event.target.files[0]);
-  };
 
   return (
     <div>
+      Test
+      <!--
       <input type="file" onChange={handleChange} />
         <button
           onClick={() =>
@@ -21,6 +18,7 @@ function App() {
       >
         Upload
       </button>
+	-->
     </div>
   );
 }
