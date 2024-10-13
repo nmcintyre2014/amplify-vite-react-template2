@@ -18,7 +18,7 @@ function App() {
       maxFileCount={1}
       isResumable
     />
-	<StorageImage alt="cat" path="data/sleeping_cat.jpg" />
+	<StorageImage alt="cat" path="data/sleepy_cat.jpg" />
 	<button type="button" onClick={handleSignOut}>Sign out</button>
 	</div>
   );
