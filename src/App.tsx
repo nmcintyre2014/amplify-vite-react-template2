@@ -12,13 +12,8 @@ function App() {
 
   return (
 	<div>
-	<FileUploader
-      acceptedFileTypes={['*/*']}
-      path="data/"
-      maxFileCount={1}
-      isResumable
-    />
-	<StorageImage alt="cat" path="data/sleepy_cat.jpg" />
+	<FileUploader acceptedFileTypes={['*/*']} path="data/" maxFileCount={1} isResumable />
+	<StorageImage alt="cat" path="data/sleepy_cat_small.jpg" />
 	<button type="button" onClick={handleSignOut}>Sign out</button>
 	</div>
   );
