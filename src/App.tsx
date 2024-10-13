@@ -1,16 +1,8 @@
+import { FileUploader } from '@aws-amplify/ui-react-storage';
+import { StorageImage } from '@aws-amplify/ui-react-storage';
 import { signOut } from 'aws-amplify/auth';
 import '@aws-amplify/ui-react/styles.css';
 
-import { getUrl } from 'aws-amplify/storage';
-
-async function getThatUrl(){
-const linkToStorageFile = await getUrl({
-  path: "data/08c3201dcb800101-stripgen-map.html",
-});
-console.log('signed URL: ', linkToStorageFile.url);
-console.log('URL expires at: ', linkToStorageFile.expiresAt);
-  return linkToStorageFile
-}
 
 function App() {
 
@@ -18,11 +10,15 @@ function App() {
     await signOut()
   }
 
-  getThatUrl();
-
   return (
 	<div>
-
+	<FileUploader
+      acceptedFileTypes={['*/*']}
+      path="data/"
+      maxFileCount={1}
+      isResumable
+    />
+	<StorageImage alt="cat" path="data/sleeping_cat.jpg" />
 	<button type="button" onClick={handleSignOut}>Sign out</button>
 	</div>
   );
